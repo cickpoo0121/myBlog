@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/header.ejs') %>
+
+    <body>
+        <%- include('./partials/navbar-user.ejs')%>
+
+            <div class="container">
+                <h1>Welcome <%= userInfo.username %>
+                </h1>
+
+
+                <div class="row mb-2">
+                    <div class="col-10">
+                        <select class="form-control" id="selectYear" style="width: 100px;">
+                            <option value="all">All years</option>
+                            <!-- <option value="2021">2021</option>
+                        <option value="2020">2020</option> -->
+                            <% year.forEach(element=> { %>
+                                <% if (locals.currentYear && element.year==currentYear) { %>
+                                    <option value="<%= element.year %>" selected><%= element.year %> </option>
+                                <% } else { %>
+                                        <option value="<%= element.year %>">
+                                            <%= element.year %>
+                                        </option>
+                                <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-success float-right" id="btnAdd" data-toggle="modal"
+                            data-target="#modalBlog">Add</button>
+                    </div>
+
+                </div>
+
+                <table class="table table-striped table-bordered text-center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>No.</th>
+                            <th>Title</th>
+                            <th>Detail</th>
+                            <th>Years</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for( let index=0; index < post.length; index++ ) { %>
+                            <tr>
+                                <td>
+                                    <%= index+1 %>
+                                </td>
+                                <td>
+                                    <%=post[index].title %>
+                                </td>
+                                <td>
+                                    <%=post[index].detail %>
+                                </td>
+                                <td>
+                                    <%=post[index].year %>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btnDelete"
+                                        blogID=" <%=post[index].blogID %>">Delete</button>
+                                    <button type="button" class="btn btn-warning btnEdit" data-toggle="modal"
+                                        data-target="#modalBlog"
+                                        blogData=" <%=JSON.stringify(post[index]) %>">Edit</button>
+                                </td>
+                            </tr>
+                            <% } %>
+
+                    </tbody>
+                </table>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalBlog" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitle">Add New Blog</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" id="txtTitle" placeholder="Tittle" class="form-control mb-2">
+                                <textarea name="" id="txtDetail" cols="30" rows="5" placeholder="Detail"
+                                    class="form-control"></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="btnModalSaveAdd">Save</button>
+
+                                <button type="button" class="btn btn-primary" id="btnModalSaveEdit">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <%- include('./partials/footer.ejs')%>
+            </div>
+    </body>
+
+    <script src="/scripts/js/blog.js"></script>
+
+</html>

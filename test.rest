@@ -1,0 +1,20 @@
+POST http://localhost:35000/login
+content-type: application/json
+
+{
+    "username":"admin",
+    "password":"1234"
+}
+
+### JWT verify
+GET http://localhost:35000/blog
+content-type: application/json
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MTI0MDgwNTEsImV4cCI6MTYxMjQ5NDQ1MX0.wsIyZmozdL9cD45uhA2ZtrdqeFmmfLJbzvFrgYPY1ec
+
+### JWT verify
+GET http://localhost:35000/JWT
+
+### Delete blog
+DELETE http://localhost:35000/blog/1
+content-type: application/json
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MTM2MTMxNjIsImV4cCI6MTYxMzY5OTU2Mn0.Wxvvrj0qqrj1BqDUxF1Ip6dlo_ck-ttSte8D_vfK5xI

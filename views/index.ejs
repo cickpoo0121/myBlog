@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/header.ejs')%>
+
+    <body>
+        <% if (locals.navbar) { %>
+            <%- include('./partials/navbar-user.ejs')%>
+        <% } else { %>
+            <%- include('./partials/navbar.ejs')%>
+
+         <% } %>
+
+            <div class="container">
+                <h1>Welcome to my blog</h1>
+                <div class="row mx-2"><%=content %></div>
+                <%- include('./partials/footer.ejs')%>
+            </div>
+
+    </body>
+
+</html>
