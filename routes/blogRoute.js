@@ -27,7 +27,6 @@ router.get('/blog', checkUser, (req, res) => {
 })
 
 // blog for selected year
-
 router.get('/blog/:year', checkUser, (req, res) => {
     const year = req.params.year
 
