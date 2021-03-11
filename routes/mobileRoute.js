@@ -143,4 +143,19 @@ router.put('/mobile/blog/edit', checkUserMobile, (req, res) => {
 
 })
 
+//check JWT
+router.get('/mobile/verify', (req, res) => {
+    const token = req.headers['authorization'] || req.headers['x-access-token'];
+    jwt.verify(token, process.env.JWT_KEY, (err, decoded) => {
+        if (err) {
+            console.log(err)
+            res.status(400).send('Invalid token')
+        }
+        else {
+            res.send(decoded)
+        }
+    })
+
+})
+
 module.exports = router;
