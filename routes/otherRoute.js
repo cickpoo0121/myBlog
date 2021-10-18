@@ -5,19 +5,19 @@ const con = require('../config/db')
 const jwt = require('jsonwebtoken');
 
 // generate password
-router.get('/password/:pass', (req, res) => {
-    const pass = req.params.pass
+// router.get('/password/:pass', (req, res) => {
+//     const pass = req.params.pass
 
-    bcypt.hash(pass, 10, (err, hash) => {
-        if (err) {
-            console.log(err)
-            res.send(500).send('Hashing error')
-        }
-        else {
-            res.send(hash)
-        }
-    })
-})
+//     bcypt.hash(pass, 10, (err, hash) => {
+//         if (err) {
+//             console.log(err)
+//             res.send(500).send('Hashing error')
+//         }
+//         else {
+//             res.send(hash)
+//         }
+//     })
+// })
 
 // Login
 router.post('/login', (req, res) => {
